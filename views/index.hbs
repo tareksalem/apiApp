@@ -1,0 +1,122 @@
+<div class="add-category-overlay">
+	<p><i class="fa fa-times"></i></p>
+	<form method="POST" action="/add/category">
+		<div class="form-group">
+			<label for="category">add category</label>
+			<input class="form-control" type="text" id="category" name="categoryName">
+		</div>
+		<div class="form-group">
+			<input type="submit" value="submit" class="btn btn-primary btn-xs">
+		</div>
+	</form>
+</div>
+<!-- container of add and update the product-->
+<div class="container container-fluid container-project">
+{{#if errors}}
+		{{#each errors}}
+			<div class="alert alert-danger">
+			<a href="#" data-dismiss="alert"><span class="glyphicon glyphicon-remove" aria=label="close"></span></a>
+				{{msg}}
+			</div>
+		{{/each}}
+	{{/if}}
+	{{#if success}}
+	{{#each success}}
+		<div class="alert alert-success">
+		<a href="#" data-dismiss="alert" aria=label="close">
+			<span class="glyphicon glyphicon-remove"></span>
+		</a>
+		{{this}}
+		</div>
+	{{/each}}
+	{{/if}}
+	<!-- section of add a new product-->
+	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		<div class="container-create-api container container-fluid">
+			<h4>create a product</h4>
+			<form method="POST" action="/add/product">
+				<div class="form-group">
+					<label for="productName">product name</label>
+					<input class="form-control productName" type="text" name="productName">
+				</div>
+				<div class="form-group">
+					<label for="productNumber">product number</label>
+					<input class="form-control productNumber" type="text" name="productNumber">
+				</div>
+				<div class="form-group">
+					<label for="productDescription">product description</label>
+					<textarea class="form-control productDescription" type="text" name="productDescription"></textarea>
+				</div>
+				<div class="form-group">
+					<label for="productCategory">product category</label>
+					<p class="btn-add-category">add new category</p>
+					<select class="form-control productCategory" name="productCategory">
+						{{#if category}}
+							{{#each category}}
+								<option>{{this.categoryName}}</option>
+							{{/each}}
+						{{/if}}
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="productPrice">product price</label>
+					<input class="form-control productPrice" type="text" name="productPrice">
+				</div>
+				<div class="form-group">
+					<input type="submit" class="btn btn-default" value="submit">
+				</div>
+			</form>
+		</div>
+	</div>
+	<!-- end the section-->
+	<!-- section to show the posted products-->
+</div>
+<div class="container container-fluid container-show-product">
+		<div class="product-heading">
+			<span class="col-lg-4 col-md-4 col-sm-4 col-xs-4">product</span>
+			<span class="col-lg-4 col-md-4 col-sm-4 col-xs-4">edit</span>
+			<span class="col-lg-4 col-md-4 col-sm-4 col-xs-4">delete</span>
+		</div>
+	
+		{{#each product}}
+			<div class="product">
+				<span class="name-product col-lg-4 col-md-4 col-sm-4 col-xs-4">{{this.productName}}</span>
+				<span class="edite-product-icon col-lg-4 col-md-4 col-sm-4 col-xs-4"><i class="fa fa-pencil"></i></span>
+				<span class="delete-prodcut-icon col-lg-4 col-md-4 col-sm-4 col-xs-4"><i class="fa fa-times"></i></span>
+				<div class="container-edit-product">
+						<i class="fa fa-times"></i>
+						<h4>edit the product</h4>
+						<form class="form-edit-product" method="post" action="/product/edit/{{this._id}}">
+							<div class="form-group">
+								<label for="productName">product name</label>
+								<input class="form-control productName" type="text" name="productName" value="{{this.productName}}">
+							</div>
+							<div class="form-group">
+								<label for="productNumber">product number</label>
+								<input class="form-control productNumber" type="text" name="productNumber" value="{{this.productNumber}}">
+							</div>
+							<div class="form-group">
+								<label for="productDescription">product description</label>
+								<textarea class="form-control productDescription" name="productDescription" value="{{this.productDescription}}">
+								{{this.productDescription}}
+								</textarea>
+							</div>
+							<div class="form-group">
+								<label for="productPrice">product price</label>
+								<input class="form-control productPrice" type="text" name="productPrice" value="{{this.productPrice}}">
+							</div>
+							<div class="form-group">
+								<input type="submit" value="submit" class="btn btn-default">
+							</div>
+						</form>
+					</div>
+					<!-- hidden form to edit the product-->
+				<div class="container-delete-product">
+				<form style="display:none;" method="POST" action="/product/delete/{{this._id}}">
+					<input type="submit" class="delete" value="submit">
+				</form>
+				</div>
+			</div>
+			{{/each}}
+		
+</div>

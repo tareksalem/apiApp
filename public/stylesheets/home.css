@@ -1,0 +1,111 @@
+/* style of body*/
+body {
+  padding: 0px;
+}
+nav{
+  margin:0px;
+}
+/* style of overlaqy add category*/
+.add-category-overlay{
+  z-index:100;
+  height:100%;
+  width:100%;
+  background-color:rgba(0, 0, 0, 0.88);
+  position:fixed;
+  top:0px;
+  padding:30px;
+  display:none;
+}
+.add-category-overlay .fa-times{
+  color:white;
+  cursor:pointer;
+}
+.add-category-overlay form{
+  width:40%;
+  margin:auto;
+  height:300px;
+  padding:10px;
+}
+.add-category-overlay form label{
+  color:white;
+  display:block;
+}
+.add-category-overlay form input{
+  width:100%;
+}
+.add-category-overlay form .btn{
+  padding:10px;
+}
+/* style of container of homepage*/
+.container-project{
+  width:100%;
+  height:auto;
+}
+.container-create-api, .container-update-api, .container-delete-api{
+  height:auto;
+  border:1px solid #cecece;
+  text-align:center;
+  width:50%;
+}
+h4{
+  color:red;
+}
+form{
+  width:90%;
+  margin:auto;
+}
+form .productDescription{
+  height:120px;
+}
+.btn-add-category{
+  color:blue;
+  padding:5px;
+  cursor:pointer;
+  display:none;
+}
+/* style of container show product and edit and delete*/
+.container-show-product{
+  width:80%;
+  background-color:#efefef;
+  height:auto;
+  margin-top:20px;
+  padding:10px;
+}
+.product-heading, .product{
+  padding:10px 0px 20px 0px;
+  border-bottom:1px solid #cecece;
+  height:35px;
+}
+.product-heading span{
+  font-size:14px;
+}
+.product span{
+  cursor:pointer;
+  font-size:17px;
+}
+.product span:first-child{
+  color:blue;
+}
+.container-edit-product{
+  width:100%;
+  position:absolute;
+  background-color:rgba(0, 0, 0, 0.88);
+  top:0px;
+  left:0px;
+  padding:20px;
+  bottom:0px;
+  height:100%;
+  display:none;
+}
+.container-edit-product h4{
+  text-align:center;
+  padding:10px;
+}
+.container-edit-product .fa-times{
+  color:white;
+  cursor:pointer;
+}
+.container-edit-product form{
+  width:40%;
+  color:white;
+}
